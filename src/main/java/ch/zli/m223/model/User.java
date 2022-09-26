@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+
+@Entity
 public class User {
     @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
