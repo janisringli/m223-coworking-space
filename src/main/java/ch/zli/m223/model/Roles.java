@@ -1,9 +1,13 @@
 package ch.zli.m223.model;
 
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -16,7 +20,9 @@ public class Roles {
     @Column(nullable = false)
   private String roleName;
 
-
+  @ManyToOne
+  @JoinColumn(name = "roles")
+  private Roles roles;
   
   public Long getId() {
     return id;

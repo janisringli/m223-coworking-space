@@ -1,8 +1,12 @@
 package ch.zli.m223.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -48,7 +52,13 @@ public class User {
   public String getEmail() {
     return email;
   }
+  @OneToMany(mappedBy = "user")
+  @JsonIgnore
+  private Set<Booking> booking;
 
+  @OneToMany(mappedBy = "user")
+  @JsonIgnore
+  private Set<Roles> roles;
 //   Setters
   public void setId(Long id) {
     this.id = id;
