@@ -56,9 +56,14 @@ public class User {
   @JsonIgnore
   private Set<Booking> booking;
 
-  @OneToMany(mappedBy = "user")
-  @JsonIgnore
-  private Set<Roles> roles;
+  
+   @ManyToOne
+   @JoinColumn(name = "roles")
+   private Roles roles;
+
+   @OneToMany(mappedBy = "user")
+   @JsonIgnore
+    private Set<Koffee> koffee;
 //   Setters
   public void setId(Long id) {
     this.id = id;

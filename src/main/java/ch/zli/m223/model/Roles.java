@@ -20,9 +20,9 @@ public class Roles {
     @Column(nullable = false)
   private String roleName;
 
-  @ManyToOne
-  @JoinColumn(name = "roles")
-  private Roles roles;
+  @OneToMany(mappedBy = "roles")
+  @JsonIgnore
+   private Set<User> user;
   
   public Long getId() {
     return id;
