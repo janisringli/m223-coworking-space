@@ -28,11 +28,16 @@ public class UserController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
+    public List<User> indexById() {
+        return userService.findAll();
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     @Path("/{id}")
     public List<User> index(Long id) {
-        if (id == 0){
-            return userService.findAll();
-        }
         return List.of(userService.getUserById(id));
     }
 
@@ -52,7 +57,7 @@ public class UserController {
 
      @PUT
      @Path("/{id}")
-      public void update(Long id, User user ){
-         userService.update(user);
+      public void update(Long id, User user) {
+         userService.update(userService.getUserById(id));
      }
 }
