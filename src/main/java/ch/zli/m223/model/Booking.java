@@ -27,6 +27,10 @@ public class Booking {
   @JoinColumn(name = "place")
   private Place place;
 
+  @ManyToOne
+  @JoinColumn(name = "user")
+  private User user;
+
 // id
     public Long getId(){
         return id;
