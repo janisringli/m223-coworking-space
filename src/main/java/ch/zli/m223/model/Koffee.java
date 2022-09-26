@@ -3,12 +3,15 @@ package ch.zli.m223.model;
 import java.security.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity 
 public class Koffee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,11 @@ public class Koffee {
   @Column(nullable = false)
   private LocalDateTime time;
 
+  @ManyToOne
+   @JoinColumn(name = "user")
+   private User user;
+
+  
   public Long getId(){
     return id;
   }
