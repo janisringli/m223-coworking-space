@@ -23,6 +23,9 @@ public class Booking {
     @Column(nullable = false)
     private LocalDateTime endTime;
 
+    @ManyToOne
+  @JoinColumn(name = "place")
+  private Place place;
 
 // id
     public Long getId(){
