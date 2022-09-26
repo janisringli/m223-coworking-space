@@ -19,7 +19,7 @@ import ch.zli.m223.model.User;
 import ch.zli.m223.service.UserService;
 
 @Path("/user")
-@Tag(name = "User", description = "Handling of User")
+@Tag(name = "user", description = "Handling of User")
 public class UserController {
 
     @Inject
@@ -28,8 +28,12 @@ public class UserController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
-    public List<User> index() {
-        return UserService.findAll();
+    @Path("/{id}")
+    public List<User> index(Long id) {
+        if (id == 0){
+            return userService.findAll();
+        }
+        return List.of(userService.getUserById(id));
     }
 
     @POST
@@ -37,17 +41,18 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
     public User create(User user) {
-       return userService.createTags(user);
+       return userService.createUser(user);
     }
 
     @DELETE
     @Path("/{id}")
     public void delete(long id) {
-       userService.deleteUser(id);
-     }
+    userService.deleteUser(id);
+    }
 
      @PUT
-      public void update(User user){
+     @Path("/{id}")
+      public void update(Long id, User user ){
          userService.update(user);
      }
 }

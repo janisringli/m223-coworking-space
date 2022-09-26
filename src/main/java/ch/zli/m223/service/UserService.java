@@ -16,13 +16,13 @@ public class UserService {
     private EntityManager entityManager;
 
     @Transactional
-    public User createTags(User user) {
+    public User createUser(User user) {
         entityManager.persist(user);
         return user;
     }
 
     @Transactional
-    public void deleteTags(long id) {
+    public void deleteUser(long id) {
         User user =  entityManager.find(User.class, id);
         entityManager.remove(user);
     }
@@ -31,9 +31,12 @@ public class UserService {
     public void update(User user){
         entityManager.merge(user);
     }
-
     public List<User> findAll() {
         var query = entityManager.createQuery("FROM User", User.class);
         return query.getResultList();
+    }
+    
+    public User getUserById(Long id){
+        return entityManager.find(User.class, id);
     }
 }
