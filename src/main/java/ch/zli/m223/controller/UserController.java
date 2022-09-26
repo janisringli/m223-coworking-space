@@ -58,6 +58,7 @@ public class UserController {
      @PUT
      @Path("/{id}")
       public void update(Long id, User user) {
-         userService.update(userService.getUserById(id));
+        user.setId(id);
+        userService.update(user);
      }
 }

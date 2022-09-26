@@ -22,7 +22,7 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUser(long id) {
+    public void deleteUser(Long id) {
         User user =  entityManager.find(User.class, id);
         entityManager.remove(user);
     }
@@ -35,7 +35,6 @@ public class UserService {
         var query = entityManager.createQuery("FROM User", User.class);
         return query.getResultList();
     }
-    
     public User getUserById(Long id){
         return entityManager.find(User.class, id);
     }
