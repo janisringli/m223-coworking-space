@@ -35,30 +35,30 @@ public class KoffeeController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
+    @Operation(summary = "Index all Koffee.", description = "Returns a list of all koffee.")
     @Path("/{id}")
-    public List<User> index(Long id) {
-        return List.of(userService.getUserById(id));
+    public List<Koffee> index(Long id) {
+        return List.of(koffeeService.getKoffeeById(id));
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
-    public User create(User user) {
-       return userService.createUser(user);
+    public Koffee create(Koffee koffee) {
+       return koffeeService.createKoffee(koffee);
     }
 
     @DELETE
     @Path("/{id}")
     public void delete(long id) {
-    userService.deleteUser(id);
+    KoffeeService.deleteKoffee(id);
     }
 
      @PUT
      @Path("/{id}")
-      public void update(Long id, User user) {
-        user.setId(id);
-        userService.update(user);
+      public void update(Long id, Koffee koffee) {
+        koffee.setId(id);
+        koffeeService.update(koffee);
      }
 }
