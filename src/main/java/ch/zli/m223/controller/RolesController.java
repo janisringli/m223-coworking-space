@@ -32,15 +32,13 @@ public class RolesController {
         return rolesService.findAll();
     }
 
-//FIXME: Add missing method
-
-    // @GET
-    // @Produces(MediaType.APPLICATION_JSON)
-    // @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
-    // @Path("/{id}")
-    // public List<Roles> index(Long id) {
-    //     return List.of(rolesService.getRolesById(id));
-    // }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
+    @Path("/{id}")
+    public List<Roles> index(Long id) {
+        return List.of(rolesService.getRolesById(id));
+    }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

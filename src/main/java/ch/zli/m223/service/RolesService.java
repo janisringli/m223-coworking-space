@@ -35,9 +35,7 @@ public class RolesService {
         var query = entityManager.createQuery("FROM Roles", Roles.class);
         return query.getResultList();
     }
-//FIXME: Add missing method
-
-    // public Roles getRolesById(Long id){
-    //     return entityManager.find(Roles.class, id);
-    // }
+     public Roles getRolesById(Long id){
+        return entityManager.find(Roles.class, id);
+     }
 }
