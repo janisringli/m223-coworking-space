@@ -52,7 +52,7 @@ public class KoffeeController {
     @DELETE
     @Path("/{id}")
     public void delete(long id) {
-    KoffeeService.deleteKoffee(id);
+    koffeeService.deleteKoffee(id);
     }
 
      @PUT
