@@ -1,5 +1,64 @@
 package ch.zli.m223.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+
+import ch.zli.m223.model.Roles;
+import ch.zli.m223.service.RolesService;
+
+@Path("/user")
+@Tag(name = "user", description = "Handling of User")
 public class RolesController {
-    
+
+    @Inject
+    RolesService rolesService;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
+    public List<Roles> indexById() {
+        return rolesService.findAll();
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Index all Roles.", description = "Returns a list of all users.")
+    @Path("/{id}")
+    public List<Roles> index(Long id) {
+        return List.of(rolesService.getRolesById(id));
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Creates a new role.", description = "Creates a new role and returns the newly added user.")
+    public Roles create(Roles roles) {
+       return rolesService.createRoles(roles);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void delete(long id) {
+    rolesService.deleteRoles(id);
+    }
+
+     @PUT
+     @Path("/{id}")
+      public void update(Long id, Roles roles) {
+        roles.setId(id);
+        rolesService.update(roles);
+     }
 }
