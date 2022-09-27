@@ -18,8 +18,8 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.model.Roles;
 import ch.zli.m223.service.RolesService;
 
-@Path("/user")
-@Tag(name = "user", description = "Handling of User")
+@Path("/roles")
+@Tag(name = "roles", description = "Handling of Roles")
 public class RolesController {
 
     @Inject
@@ -27,19 +27,20 @@ public class RolesController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
+    @Operation(summary = "Index all Roles.", description = "Returns a list of all users.")
     public List<Roles> indexById() {
         return rolesService.findAll();
     }
 
+//FIXME: Add missing method
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Index all Roles.", description = "Returns a list of all users.")
-    @Path("/{id}")
-    public List<Roles> index(Long id) {
-        return List.of(rolesService.getRolesById(id));
-    }
+    // @GET
+    // @Produces(MediaType.APPLICATION_JSON)
+    // @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
+    // @Path("/{id}")
+    // public List<Roles> index(Long id) {
+    //     return List.of(rolesService.getRolesById(id));
+    // }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
