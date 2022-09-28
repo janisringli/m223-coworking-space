@@ -32,36 +32,38 @@ public class Coffee {
    @JoinColumn(name = "user")
    private User user;
 
-  public Long getId() {
+public Long getId() {
     return id;
-  }
+}
 
-  public void setId(Long id) {
+public void setId(Long id) {
     this.id = id;
-  }
+}
 
-  public Float getPrice() {
+public Float getPrice() {
     return price;
-  }
+}
 
-  public void setPrice(Float price) {
+public void setPrice(Float price) {
     this.price = price;
-  }
+}
 
-  public LocalDateTime getTime() {
+public LocalDateTime getTime() {
     return time;
-  }
+}
 
-  public void setTime(LocalDateTime time) {
+public void setTime(LocalDateTime time) {
     this.time = time;
-  }
+}
 
-  public User getUser() {
+public User getUser() {
     return user;
-  }
+}
 
-  public void setUser(User user) {
+public void setUser(User user) {
     this.user = user;
-  }
+}
+
+  
 
 }

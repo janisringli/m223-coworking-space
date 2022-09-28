@@ -37,25 +37,7 @@ public class User {
   private String email;
 
 
-//   Getters
-  public Long getId() {
-    return id;
-  }
-  public String getUsername() {
-    return username;
-  }
-  public String getFirstName(){
-    return firstName;
-  }
-  public String getLastName(){
-    return lastName;
-  }
-  public String getPassword() {
-    return password;
-  }
-  public String getEmail() {
-    return email;
-  }
+
   @OneToMany(mappedBy = "user")
   @JsonIgnore
   private Set<Booking> booking;
@@ -69,36 +51,95 @@ public class User {
    @OneToMany(mappedBy = "user")
    @JsonIgnore
     private Set<Coffee> coffee;
-//   Setters
+
+
+  public Long getId() {
+    return id;
+  }
+
+
   public void setId(Long id) {
     this.id = id;
   }
+
+
+  public String getUsername() {
+    return username;
+  }
+
+
   public void setUsername(String username) {
     this.username = username;
   }
-  public void setfirstName(String firstName) {
+
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+
+  public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
-  public void setlastName(String lastName) {
+
+
+  public String getLastName() {
+    return lastName;
+  }
+
+
+  public void setLastName(String lastName) {
     this.lastName = lastName;
   }
+
+
+  public String getPassword() {
+    return password;
+  }
+
+
   public void setPassword(String password) {
     this.password = password;
   }
+
+
+  public String getEmail() {
+    return email;
+  }
+
+
   public void setEmail(String email) {
     this.email = email;
   }
-  
-  public void setRoles(Roles roles) {
-    this.roles = roles;
-  }
+
+
   public Set<Booking> getBooking() {
     return booking;
   }
+
+
+  public void setBooking(Set<Booking> booking) {
+    this.booking = booking;
+  }
+
+
   public Roles getRoles() {
     return roles;
   }
+
+
+  public void setRoles(Roles roles) {
+    this.roles = roles;
+  }
+
+
   public Set<Coffee> getCoffee() {
     return coffee;
   }
+
+
+  public void setCoffee(Set<Coffee> coffee) {
+    this.coffee = coffee;
+  }
+
 }
