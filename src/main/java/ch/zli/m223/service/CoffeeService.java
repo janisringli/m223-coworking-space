@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-
+import javax.validation.Valid;
 
 import ch.zli.m223.model.Coffee;
 
@@ -16,7 +16,7 @@ public class CoffeeService {
     private EntityManager entityManager;
 
     @Transactional
-    public Coffee createCoffee(Coffee coffee) {
+    public Coffee createCoffee(@Valid Coffee coffee) {
         entityManager.persist(coffee);
         return coffee;
     }
