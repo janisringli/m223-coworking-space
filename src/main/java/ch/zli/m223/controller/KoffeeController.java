@@ -2,6 +2,7 @@ package ch.zli.m223.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -42,6 +43,7 @@ public class KoffeeController {
     }
 
     @POST
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
@@ -50,12 +52,14 @@ public class KoffeeController {
     }
 
     @DELETE
+    @RolesAllowed("admin")
     @Path("/{id}")
     public void delete(long id) {
     koffeeService.deleteKoffee(id);
     }
 
      @PUT
+    @RolesAllowed("admin")
      @Path("/{id}")
       public void update(Long id, Koffee koffee) {
         koffee.setId(id);

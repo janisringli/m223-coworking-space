@@ -2,6 +2,7 @@ package ch.zli.m223.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,6 +27,7 @@ public class BookingController {
     BookingService bookingService;
 
     @GET
+    @RolesAllowed("benutzer")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Bookings.", description = "Returns a list of all bookings.")
     public List<Booking> indexById() {

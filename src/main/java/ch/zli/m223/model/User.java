@@ -3,6 +3,7 @@ package ch.zli.m223.model;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.ws.rs.MatrixParam;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -25,10 +26,10 @@ public class User {
   @Column(nullable = false)
   private String lastName;
   
-
   @Column(nullable = false)
   private String password;
 
+  // @Pattern(regexp = "^(.+)@(.+)$")
   @Column(nullable = false)
   private String email;
 
