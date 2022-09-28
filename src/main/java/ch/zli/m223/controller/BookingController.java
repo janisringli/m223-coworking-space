@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import javax.validation.ConstraintViolationException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -55,8 +56,13 @@ public class BookingController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
-    public Booking create(Booking booking) {
-       return bookingService.createBooking(booking);
+    public Response createBooking(Booking booking) {
+        try {
+            return Response.ok(bookingService.createBooking(booking)).build();
+        }
+        catch (ConstraintViolationException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getConstraintViolations().toString()).build();
+        }
     }
 
     @DELETE

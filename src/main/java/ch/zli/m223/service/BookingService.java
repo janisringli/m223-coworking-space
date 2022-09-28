@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-
+import javax.validation.Valid;
 
 import ch.zli.m223.model.Booking;
 
@@ -16,7 +16,7 @@ public class BookingService {
     private EntityManager entityManager;
 
     @Transactional
-    public Booking createBooking(Booking booking) {
+    public Booking createBooking (@Valid Booking booking) {
         entityManager.persist(booking);
         return booking;
     }

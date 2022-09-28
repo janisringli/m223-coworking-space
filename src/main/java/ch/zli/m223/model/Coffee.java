@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -20,8 +21,10 @@ public class Coffee {
     private Long id;
 
   @Column(nullable = false)
+  @NotNull(message = "Pay your coffee! Nothing is free in this world!")
   private Float price;
 
+  @Past(message = "Date must be in the past")
   @Column(nullable = false)
   private LocalDateTime time;
 

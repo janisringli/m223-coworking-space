@@ -3,7 +3,7 @@ package ch.zli.m223.model;
 import java.util.Set;
 
 import javax.persistence.*;
-import javax.ws.rs.MatrixParam;
+import javax.validation.constraints.Pattern;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -17,7 +17,7 @@ public class User {
   @Schema(readOnly = true)
   private Long id;
 
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   private String username;
 
   @Column(nullable = false)
@@ -29,8 +29,8 @@ public class User {
   @Column(nullable = false)
   private String password;
 
-  // @Pattern(regexp = "^(.+)@(.+)$")
-  @Column(nullable = false)
+  @Pattern(regexp = "^(.+)@(.+)$")
+  @Column(nullable = false, unique = true)
   private String email;
 
 

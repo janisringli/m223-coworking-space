@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -18,9 +19,11 @@ public class Booking {
     private LocalDate date;
 
     @Column(nullable = false)
+    @Future(message = "Starttime must be in the future")
     private LocalDateTime startTime;
 
     @Column(nullable = false)
+    @Future(message = "Endtime must be in the future")
     private LocalDateTime endTime;
 
     @ManyToOne

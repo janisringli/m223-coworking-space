@@ -16,7 +16,7 @@ public class Place {
     @Schema(readOnly = true)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
   private Long placeNumber;
 
   public Long getId(){
