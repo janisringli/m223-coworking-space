@@ -40,8 +40,12 @@ public class PlaceController {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index one Place.", description = "Returns a list of one place.")
     @Path("/{id}")
-    public List<Place> index(Long id) {
-        return List.of(placeService.getPlaceById(id));
+    public Response index(Long id) {
+        Place place = placeService.getPlaceById(id);
+        if (place == null) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("There is no place registered to this id").build();
+        }
+        return Response.ok(place).build();
     }
 
     @POST

@@ -47,8 +47,12 @@ public class BookingController {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     @Path("/{id}")
-    public List<Booking> index(Long id) {
-        return List.of(bookingService.getBookingById(id));
+    public Response index(Long id) {
+        Booking booking = bookingService.getBookingById(id);
+        if (booking == null) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("There is no Booking registered to this id").build();
+        }
+        return Response.ok(booking).build();
     }
 
     @POST

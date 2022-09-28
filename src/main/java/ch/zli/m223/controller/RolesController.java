@@ -41,8 +41,12 @@ public class RolesController {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
     @Path("/{id}")
-    public List<Roles> index(Long id) {
-        return List.of(rolesService.getRolesById(id));
+    public Response index(Long id) {
+        Roles roles = rolesService.getRolesById(id);
+        if (roles == null) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("There are no roles registered to this id").build();
+        }
+        return Response.ok(roles).build();
     }
 
     @POST

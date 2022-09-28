@@ -42,8 +42,12 @@ public class UserController {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     @Path("/{id}")
-    public List<User> index(Long id) {
-        return List.of(userService.getUserById(id));
+    public Response index(Long id) {
+        User user = userService.getUserById(id);
+        if (user == null) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("There is no user registered to this id").build();
+        }
+        return Response.ok(user).build();
     }
 
     @POST
