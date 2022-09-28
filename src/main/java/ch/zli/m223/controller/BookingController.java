@@ -27,7 +27,7 @@ public class BookingController {
     BookingService bookingService;
 
     @GET
-    @RolesAllowed("benutzer")
+    @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Bookings.", description = "Returns a list of all bookings.")
     public List<Booking> indexById() {
@@ -36,6 +36,7 @@ public class BookingController {
 
 
     @GET
+    @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     @Path("/{id}")
@@ -44,6 +45,7 @@ public class BookingController {
     }
 
     @POST
+    @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
@@ -53,14 +55,16 @@ public class BookingController {
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed({"Admin", "Mitglied"})
     public void delete(Long id) {
     bookingService.deleteBooking(id);
     }
 
-     @PUT
-     @Path("/{id}")
-      public void update(Long id, Booking booking) {
+    @PUT
+    @RolesAllowed({"Admin", "Mitglied"})
+    @Path("/{id}")
+    public void update(Long id, Booking booking) {
         booking.setId(id);
         bookingService.update(booking);
-     }
+    }
 }

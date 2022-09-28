@@ -65,7 +65,7 @@ public class User {
 
    @OneToMany(mappedBy = "user")
    @JsonIgnore
-    private Set<Coffee> Coffee;
+    private Set<Coffee> coffee;
 //   Setters
   public void setId(Long id) {
     this.id = id;
@@ -96,6 +96,6 @@ public class User {
     return roles;
   }
   public Set<Coffee> getCoffee() {
-    return Coffee;
+    return coffee;
   }
 }

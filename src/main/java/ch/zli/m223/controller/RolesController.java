@@ -27,6 +27,7 @@ public class RolesController {
     RolesService rolesService;
 
     @GET
+    @RolesAllowed("Admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Roles.", description = "Returns a list of all users.")
     public List<Roles> indexById() {
@@ -34,6 +35,7 @@ public class RolesController {
     }
 
     @GET
+    @RolesAllowed("Admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index a single Role.", description = "Returns a list of a single role.")
     @Path("/{id}")

@@ -27,6 +27,7 @@ public class UserController {
     UserService userService;
 
     @GET
+    @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     public List<User> indexById() {
@@ -35,6 +36,7 @@ public class UserController {
 
 
     @GET
+    @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     @Path("/{id}")

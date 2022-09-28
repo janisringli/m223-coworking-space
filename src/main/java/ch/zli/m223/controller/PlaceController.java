@@ -43,7 +43,7 @@ public class PlaceController {
     }
 
     @POST
-    @RolesAllowed("Admin")
+    @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")

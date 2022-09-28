@@ -1,4 +1,4 @@
-# punch-clock Project
+# coworkingspace Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 

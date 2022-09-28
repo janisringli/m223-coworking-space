@@ -28,8 +28,8 @@ public class CoffeeService {
     }
 
     @Transactional
-    public void update(Coffee Coffee){
-        entityManager.merge(Coffee);
+    public void update(Coffee coffee){
+        entityManager.merge(coffee);
     }
     public List<Coffee> findAll() {
         var query = entityManager.createQuery("FROM Coffee", Coffee.class);
