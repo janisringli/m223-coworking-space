@@ -21,12 +21,15 @@ public class User {
   private String username;
 
   @Column(nullable = false)
+  @Pattern(regexp = "^[a-zA-Z]+$", message = "Name can only contain letters")
   private String firstName;
 
   @Column(nullable = false)
+  @Pattern(regexp = "^[a-zA-Z]+$", message = "Name can only contain letters")
   private String lastName;
   
   @Column(nullable = false)
+  @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Password can only contain letters and numbers")
   private String password;
 
   @Pattern(regexp = "^(.+)@(.+)$")

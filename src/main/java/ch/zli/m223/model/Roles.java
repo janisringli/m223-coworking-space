@@ -4,6 +4,7 @@ package ch.zli.m223.model;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -18,7 +19,8 @@ public class Roles {
     private Long id;
 
     @Column(nullable = false, unique = true)
-  private String roleName;
+    @NotBlank(message = "Role name cannot be empty")
+    private String roleName;
 
   @OneToMany(mappedBy = "roles")
   @JsonIgnore
