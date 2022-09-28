@@ -49,10 +49,10 @@ public class BookingController {
     @Path("/{id}")
     public Response index(Long id) {
         Booking booking = bookingService.getBookingById(id);
-        if (booking == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("There is no Booking registered to this id").build();
+        if (booking.getUser().getId().toString().equals(jwt.getClaim("id").toString()) || jwt.getGroups().contains("Admin")) {
+            return Response.ok(booking).build();
         }
-        return Response.ok(booking).build();
+        return Response.status(Status.UNAUTHORIZED).entity("You can only edit your own bookings").build();
     }
 
     @POST

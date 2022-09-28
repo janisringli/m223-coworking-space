@@ -34,6 +34,7 @@ public class AuthorizationController {
             if (user.getPassword().equals(LoginData.getPassword())) {
                 String jwt = Jwt
                 .issuer("https://example.com/issuer") 
+                .expiresIn(Integer.MAX_VALUE)
                 .upn("jdoe@quarkus.io") 
                 .groups(user.getRoles().getRoleName()) 
                 .claim(user.getFirstName(), user.getLastName()) 
