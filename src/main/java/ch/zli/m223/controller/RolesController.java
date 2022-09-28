@@ -42,7 +42,7 @@ public class RolesController {
     }
 
     @POST
-    @RolesAllowed("admin")
+    @RolesAllowed("Admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new role.", description = "Creates a new role and returns the newly added user.")
@@ -51,14 +51,14 @@ public class RolesController {
     }
 
     @DELETE
-    @RolesAllowed("admin")
+    @RolesAllowed("Admin")
     @Path("/{id}")
-    public void delete(long id) {
+    public void delete(Long id) {
     rolesService.deleteRoles(id);
     }
 
      @PUT
-    @RolesAllowed("admin")
+     @RolesAllowed("Admin")
      @Path("/{id}")
       public void update(Long id, Roles roles) {
         roles.setId(id);

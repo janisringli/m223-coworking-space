@@ -43,7 +43,7 @@ public class PlaceController {
     }
 
     @POST
-    @RolesAllowed("admin")
+    @RolesAllowed("Admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
@@ -52,13 +52,14 @@ public class PlaceController {
     }
 
     @DELETE
+    @RolesAllowed("Admin")
     @Path("/{id}")
-    public void delete(long id) {
+    public void delete(Long id) {
     placeService.deletePlace(id);
     }
 
      @PUT
-    @RolesAllowed("admin")
+     @RolesAllowed("Admin")
      @Path("/{id}")
       public void update(Long id, Place place) {
         place.setId(id);

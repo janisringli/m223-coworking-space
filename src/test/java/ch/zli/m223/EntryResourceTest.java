@@ -17,5 +17,6 @@ public class EntryResourceTest {
              .statusCode(200)
              .body(is("[]"));
     }
+    
 
 }

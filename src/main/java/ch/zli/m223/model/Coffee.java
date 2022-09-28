@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 @Entity 
-public class Koffee {
+public class Coffee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)

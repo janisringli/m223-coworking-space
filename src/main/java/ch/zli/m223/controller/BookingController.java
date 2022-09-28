@@ -53,7 +53,7 @@ public class BookingController {
 
     @DELETE
     @Path("/{id}")
-    public void delete(long id) {
+    public void delete(Long id) {
     bookingService.deleteBooking(id);
     }
 

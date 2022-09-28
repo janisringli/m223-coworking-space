@@ -41,10 +41,10 @@ public class User {
   public String getUsername() {
     return username;
   }
-  public String getfirstName(){
+  public String getFirstName(){
     return firstName;
   }
-  public String getlastName(){
+  public String getLastName(){
     return lastName;
   }
   public String getPassword() {
@@ -62,9 +62,10 @@ public class User {
    @JoinColumn(name = "roles")
    private Roles roles;
 
+
    @OneToMany(mappedBy = "user")
    @JsonIgnore
-    private Set<Koffee> koffee;
+    private Set<Coffee> Coffee;
 //   Setters
   public void setId(Long id) {
     this.id = id;
@@ -83,5 +84,18 @@ public class User {
   }
   public void setEmail(String email) {
     this.email = email;
+  }
+  
+  public void setRoles(Roles roles) {
+    this.roles = roles;
+  }
+  public Set<Booking> getBooking() {
+    return booking;
+  }
+  public Roles getRoles() {
+    return roles;
+  }
+  public Set<Coffee> getCoffee() {
+    return Coffee;
   }
 }

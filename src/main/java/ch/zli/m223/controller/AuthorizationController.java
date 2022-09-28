@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import ch.zli.m223.dto.LoginData;
 import ch.zli.m223.model.User;
 import ch.zli.m223.service.AuthorizationService;
+import io.smallrye.jwt.build.Jwt;
 
 
 
@@ -26,7 +27,14 @@ public class AuthorizationController {
     public String login(LoginData LoginData) {
         User user = authorizationService.getUserByUsername(LoginData.getUsername());
         if (user.getPassword().equals(LoginData.getPassword())) {
-            return "Login successful";
+            String token =
+           Jwt.issuer("https://example.com/issuer") 
+             .upn("jdoe@quarkus.io") 
+             .groups(user.getRoles().getRoleName()) 
+             .claim(user.getFirstName(), user.getLastName()) 
+           .sign();
+        System.out.println(token);
+            return token;
         } else {
             return "Login failed";
         }

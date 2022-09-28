@@ -43,7 +43,6 @@ public class UserController {
     }
 
     @POST
-    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
@@ -52,14 +51,14 @@ public class UserController {
     }
 
     @DELETE
-    @RolesAllowed("admin")
+    @RolesAllowed("Admin")
     @Path("/{id}")
-    public void delete(long id) {
+    public void delete(Long id) {
     userService.deleteUser(id);
     }
 
      @PUT
-    @RolesAllowed("admin")
+     @RolesAllowed("Admin")
      @Path("/{id}")
       public void update(Long id, User user) {
         user.setId(id);
