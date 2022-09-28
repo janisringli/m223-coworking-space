@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class CoffeeResourceTest {
+public class EndpointResourceTest {
 
     @Test
     public void coffeeEndpoint200() {
@@ -25,6 +25,26 @@ public class CoffeeResourceTest {
             .statusCode(200)
             .body(is("[]"));
     }
-    
+    @Test
+    public void userEndpoint401() {
+        given()
+          .when().get("/user")
+          .then()
+            .statusCode(401);
+    }
+    @Test
+    public void rolesEndpoint401() {
+        given()
+          .when().get("/roles")
+          .then()
+            .statusCode(401);
+    }
+    @Test
+    public void bookingEndpoint401() {
+        given()
+          .when().get("/booking")
+          .then()
+            .statusCode(401);
+    }
 
 }
