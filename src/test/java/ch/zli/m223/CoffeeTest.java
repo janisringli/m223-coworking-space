@@ -18,7 +18,7 @@ public class CoffeeTest {
         given()
           .when().get("http://localhost:8080/coffe")
           .then()
-            .statusCode(404);    
+            .statusCode(404); 
     }
 
 }
