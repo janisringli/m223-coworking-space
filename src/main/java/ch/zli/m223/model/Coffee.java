@@ -19,10 +19,7 @@ public class Coffee {
     @Schema(readOnly = true)
     private Long id;
 
-    @Column(nullable = false)
-  private String coffeeType;
-
-    @Column(nullable = false)
+  @Column(nullable = false)
   private Float price;
 
   @Column(nullable = false)
@@ -38,14 +35,6 @@ public class Coffee {
 
   public void setId(Long id) {
     this.id = id;
-  }
-
-  public String getCoffeeType() {
-    return coffeeType;
-  }
-
-  public void setCoffeeType(String coffeeType) {
-    this.coffeeType = coffeeType;
   }
 
   public Float getPrice() {

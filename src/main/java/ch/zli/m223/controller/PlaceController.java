@@ -46,7 +46,7 @@ public class PlaceController {
     @RolesAllowed({"Admin", "Mitglied"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Creates a new user.", description = "Creates a new user and returns the newly added user.")
+    @Operation(summary = "Creates a new user.", description = "Creates a new place and returns the newly added place.")
     public Place create(Place place) {
        return placeService.createPlace(place);
     }

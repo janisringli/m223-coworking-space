@@ -31,33 +31,53 @@ public class Booking {
   @JoinColumn(name = "user")
   private User user;
 
-// id
-    public Long getId(){
-        return id;
-      }
-      public void setId(Long id){
-        this.id = id;
-      }
+public Long getId() {
+    return id;
+}
 
-    //   date
-    public LocalDate getDate(){
-        return date;
-      }
-      public void setDate(LocalDate date){
-        this.date = date;
-      }
-    //   starttime
-    public LocalDateTime getStartTime(){
-        return startTime;
-      }
-      public void setStartTime(LocalDateTime startTime){
-        this.startTime = startTime;
-      }
-    //   endtime
-      public LocalDateTime getEndTime(){
-        return endTime;
-      }
-      public void setsetEndTime(LocalDateTime endTime){
-        this.endTime = endTime;
-      }
+public void setId(Long id) {
+    this.id = id;
+}
+
+public LocalDate getDate() {
+    return date;
+}
+
+public void setDate(LocalDate date) {
+    this.date = date;
+}
+
+public LocalDateTime getStartTime() {
+    return startTime;
+}
+
+public void setStartTime(LocalDateTime startTime) {
+    this.startTime = startTime;
+}
+
+public LocalDateTime getEndTime() {
+    return endTime;
+}
+
+public void setEndTime(LocalDateTime endTime) {
+    this.endTime = endTime;
+}
+
+public Place getPlace() {
+    return place;
+}
+
+public void setPlace(Place place) {
+    this.place = place;
+}
+
+public User getUser() {
+    return user;
+}
+
+public void setUser(User user) {
+    this.user = user;
+}
+
+
 }
